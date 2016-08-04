@@ -1,0 +1,54 @@
+@prefix: color;
+@listNames: black, red, purple, green, blue;
+@listColors: #000, #ff0, #800080, #008000, #00f;
+
+.colors(@indexCount: 1) when (@indexCount =< length(@listNames)) {
+	@colorName: extract(@listNames, @indexCount);
+	@colorHex: extract(@listColors, @indexCount);
+	.@{prefix}-@{colorName} {
+		@{prefix}: @colorHex;
+	}
+	.colors(@indexCount + 1);
+}
+
+.colors();
+
+
+
+// JavaScript в Less
+// Между `` можно поместить код JS
+.test-js {
+	content: `1`;
+	content: `[1, 2, 3]`;
+	content: `1 + 6 + Math.cos(1)`;
+	content: `process.platform`;
+	content: `(function() {
+				var a = 2;
+				var b = Math.pow(a, 4);
+				return a + b;
+			 })()`;
+
+	@test: 123;
+	content: `@{test}`;
+	content: `this.test.toJS()`;
+
+	@world: "world";
+	content: `'hello' + ' ' + @{world}`;
+
+	@list: 1, 2, 3;
+	@list-js: ~`@{list}.join(', ')`;
+	content: @list-js;
+
+	.mixin1(@a, @b) {
+		@js: ~`(function(a, b) { return a + b; })(@{a}, @{b})`;
+		content: @js;
+	}
+	.mixin1(1, 5);
+
+
+	.mixin2(...) {
+		@js: ~`(function(args){ return args; })('@{arguments}')`;
+		content: @js;
+	}
+	.mixin2(3, 123);
+}

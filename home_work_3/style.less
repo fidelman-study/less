@@ -1,0 +1,22 @@
+.result(@a, @b, @c) {
+	@list: @a, @b, @c;
+	@result: (sqrt(@a) + cos(@b) + max(@list)) / pow(@c, 5);
+	content: "@{result}";
+}
+
+h3 {
+	&:after {
+		.result(1, 2, 3);
+	}
+}
+
+@color: #321b2a;
+@color-darken: darken(@color, 25%);
+@color-light: lighten(@color, 25%);
+
+a {
+	color: @color-darken;
+	&:hover {
+		color: @color-light;
+	}
+}

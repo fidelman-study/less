@@ -1,0 +1,56 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css);
+html {
+	margin: auto;
+	text-align: center;
+}
+.btn-style(@background, @color: #fff, @font-size:10px, @padding: 2px 4px, @line-height: 20px) {
+	background: @background;
+	color: @color;
+	font-size: @font-size;
+	line-height: @line-height;
+	padding: @padding;
+}
+button {
+	border: none;
+	border-radius: 4px;
+}
+.main-default {
+	button {
+		&:nth-child(2) {
+			.btn-style(#e0e0e0,#333);
+		}
+		&:nth-child(3) {
+			.btn-style(#3b83c0);
+		}	
+		&:nth-child(4) {
+			.btn-style(#404245);
+		}
+	}
+
+}
+.main-hover {
+	button{
+		&:nth-child(2) {
+			.btn-style(#e8e8e8, #333);
+		}
+		&:nth-child(3) {
+			.btn-style(#458ac6);
+		}
+		&:nth-child(4) {
+			.btn-style(#1b1c1d);
+		}
+	}
+}
+.main-size {
+	button{
+		&:nth-child(2) {
+			.btn-style(#e8e8e8, #333);
+		}
+		&:nth-child(3) {
+			.btn-style(#e8e8e8, #333, 14px, 20px, 6px 12px);
+		}
+		&:nth-child(4) {
+			.btn-style(#e8e8e8, #333,18px, 20px, 10px 16px);
+		}
+	}
+}
